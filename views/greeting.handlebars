@@ -1,0 +1,39 @@
+  <div class="row" style="background-color:pink">
+    <div class="twelve columns">
+      <h2>Greetings App</h2>
+    </div>
+  </div>
+  <p>
+    <div class="">
+      <form action="/greet" method="POST">
+        Name :
+        <input type="text" class="userName" name="name" placeholder="enter your name here" value="{{enterInput}}" onkeydown="Check(this);" onkeyup="Check(this);">
+        <script>
+          function Check(me) {
+            me.value = me.value.replace(/[0-9]/g, "");
+          }
+        </script>
+    </div>
+    <p>
+      <div class="RadioBtn">
+        <input type="radio" name="language" class="language" value="English">English
+        <input type="radio" name="language" class="language" value="Afrikaans">Afrikaans
+        <input type="radio" name="language" class="language" value="isiXhosa">isiXhosa
+
+      </div>
+      <p>
+        <div class="counter" name="counterAll" value="count"><b>Counter:{{count}}</b></div>
+        <p>
+          <div class="row">
+            <div class="three columns">
+              <button class="greetMeBtn" id="greetMeBtn" type="submit" name="greeted" value="{{greet}}">GREET ME</button>
+              {{!-- <button class="resetBtn" id="resetBtn" type="submit" name="reset" value="{{reset}}">RESET</button> --}}
+            </div>
+            </form>
+
+            <div class="three columns">
+              <div class="greeting" name="greetMsg" value="">{{greetName}}</div>
+            </div>
+          </div>
+          </form>
+          </div>
