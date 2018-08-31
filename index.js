@@ -57,6 +57,14 @@ app.get('/greet/:name/:language', function(req, res) {
   // res.redirect('/');
 });
 
+app.post('/', function(req, res){
+  greetPeople.reset();
+  let count = greetPeople.greetCounter();
+  res.render('greeting', {
+    count
+  });
+});
+
 const PORT = process.env.PORT || 3015;
 
 app.listen(PORT, function() {

@@ -4,9 +4,10 @@ module.exports = function Greetings(stored) {
   let language = '';
 
   function greet(language, name) {
-    if (greetedNames[name] === undefined) {
-      greetedNames[name] = 0;
-      // localStorage.setItem('greetedNames',JSON.stringify(greetedNames));
+    if (name !== "" && language ) {
+      if (greetedNames[name] === undefined) {
+        greetedNames[name] = 0;
+      }
     }
 
     if (language === 'English') {
@@ -21,13 +22,17 @@ module.exports = function Greetings(stored) {
   }
 
   function greetCounter() {
-    let storedNames = greetedNames;
-     return Object.keys(storedNames).length;
-    // return storedNames;
+    return Object.keys(greetedNames).length;
   }
 
   function greetnamCounter() {
     return greetedNames;
+  }
+
+  function reset() {
+    greetnamCounter()
+    let name = '';
+    let language = '';
   }
 
   return {
