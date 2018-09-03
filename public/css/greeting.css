@@ -2,3 +2,31 @@
   margin: auto;
   width: auto;
 }
+.header{
+  background-color: #ffe2d0;
+  margin-top: 5%;
+  padding-bottom: 10%;
+}
+h2 {
+  font: italic small-caps bold 14px/22px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  text-align: center;
+  padding-top: 2%;
+}
+.content{
+  text-align: left;
+  padding-top: 5%;
+  margin-left: 1%;
+}
+.userName{
+  margin-left: 3%;
+}
+.body{
+  text-align: left;
+  margin-top: 4%;
+}
+
+.dis{
+    font-weight: bold;
+    font-size: 2em;
+}

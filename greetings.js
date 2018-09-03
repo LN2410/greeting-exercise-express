@@ -1,7 +1,5 @@
 module.exports = function Greetings(stored) {
   let greetedNames = stored || {};
-  let name = '';
-  let language = '';
 
   function greet(language, name) {
     if (name !== "" && language ) {
@@ -29,10 +27,7 @@ module.exports = function Greetings(stored) {
     return greetedNames;
   }
 
-  function reset() {
-    greetnamCounter()
-    let name = '';
-    let language = '';
+  function reset(language, name){    
   }
 
   return {

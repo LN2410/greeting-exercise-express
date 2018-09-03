@@ -1,9 +1,16 @@
-  <div class="row" style="background-color:pink">
-    <div class="twelve columns">
+<div class="header">
+  <div class="row">
+    <div class="nine columns">
       <h2>Greetings App</h2>
     </div>
+    <div class="three columns">
+    <form action="/greets" method="POST">
+      <button class="resetBtn" id="resetBtn" type="submit" name="greets" value="{{reset}}">View Greeted</button>
+    </form>
+  </div>
   </div>
   <p>
+</div>
     <div class="">
       <form action="/greet" method="POST">
         Name :

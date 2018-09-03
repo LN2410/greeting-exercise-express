@@ -2,12 +2,7 @@ let express = require('express');
 let Greetings = require('./greetings');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const flash = require('express-flash');
-const session = require('express-session');
-// const express = require('express');
 const app = express();
-
-//let app = express();
 
 let greetPeople = Greetings();
 
@@ -57,12 +52,17 @@ app.get('/greet/:name/:language', function(req, res) {
   // res.redirect('/');
 });
 
+app.post('/greets', function (req, res) {
+  let greetName = req.body.greeted_names;
+  res.render('greets');
+});
+
 app.post('/', function(req, res){
   greetPeople.reset();
-  let count = greetPeople.greetCounter();
-  res.render('greeting', {
-    count
-  });
+  // let count = greetPeople.greetCounter();
+  // res.render('greeting', {
+  //   count
+  // });
 });
 
 const PORT = process.env.PORT || 3015;
