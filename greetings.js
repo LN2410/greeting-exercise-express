@@ -20,6 +20,7 @@ module.exports = function Greetings(stored) {
   }
 
   function greetCounter() {
+    let storedNames = greetedNames;
     return Object.keys(greetedNames).length;
   }
 
@@ -27,7 +28,7 @@ module.exports = function Greetings(stored) {
     return greetedNames;
   }
 
-  function reset(language, name){    
+  function reset(language, name){
   }
 
   return {
