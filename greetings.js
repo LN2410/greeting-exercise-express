@@ -1,12 +1,11 @@
 module.exports = function Greetings(stored) {
   let greetedNames = stored || {};
 
-  function greet(language, name) {
-    if (name !== "" && language ) {
-      if (greetedNames[name] === undefined) {
-        greetedNames[name] = 0;
-      }
+  async function greet(language, name) {
+    if (language !== undefined && name || name !== '') {
+
     }
+    var checkUsers = await pool.query('select * from my_greetings where greeted_names=$1', [name]);;
 
     if (language === 'English') {
       return 'Good day, ' + name;
