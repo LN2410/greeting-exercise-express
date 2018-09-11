@@ -50,24 +50,24 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-app.get('/', function(req, res) {
-  let count = greetPeople.greetCounter();
-  res.render('greeting', {
-    count
-  });
-});
-
-app.post('/greet', function(req, res) {
-  let name = req.body.name;
-  let language = req.body.language;
-  let greetName = greetPeople.greet(language, name);
-  let count = greetPeople.greetCounter();
-
-  res.render('greeting', {
-    greetName,
-    count
-  });
-});
+// app.get('/', function(req, res) {
+//   let count = greetPeople.greetCounter();
+//   res.render('greeting', {
+//     count
+//   });
+// });
+//
+// app.post('/greet', function(req, res) {
+//   let name = req.body.name;
+//   let language = req.body.language;
+//   let greetName = greetPeople.greet(language, name);
+//   let count = greetPeople.greetCounter();
+//
+//   res.render('greeting', {
+//     greetName,
+//     count
+//   });
+// });
 
 // app.get('/greet/:name/:language', function(req, res) {
 //   let name = req.params.name;
