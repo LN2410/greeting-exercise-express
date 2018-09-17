@@ -41,7 +41,6 @@ app.engine('handlebars', exphbs({
 
 app.set('view engine', 'handlebars');
 // parse application/x-www-form-urlencoded
-
 app.use(bodyParser.urlencoded({
   extended: false
 }));
@@ -50,24 +49,33 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-// app.get('/', function(req, res) {
-//   let count = greetPeople.greetCounter();
-//   res.render('greeting', {
-//     count
-//   });
-// });
-//
-// app.post('/greet', function(req, res) {
-//   let name = req.body.name;
-//   let language = req.body.language;
-//   let greetName = greetPeople.greet(language, name);
-//   let count = greetPeople.greetCounter();
-//
-//   res.render('greeting', {
-//     greetName,
-//     count
-//   });
-// });
+app.get('/', async (req, res) => {
+  try {
+    res.render('greeting', {
+      count: await greetPeople.getGreeted()
+    });
+  } catch (error) {
+    next(error.stack);
+  }
+});
+
+app.post('/greet', async (req, res) => {
+  try{
+    let name = req.body.name;
+    let language = req.body.language;
+
+    let greetName =await greetPeople.greet(language, name);
+    let count = await greetPeople.getCounter();
+
+    res.render('greeting', {
+      greetName,
+      count
+    });
+  }
+  catch(err){
+    res.send(err.stack)
+  }
+});
 
 // app.get('/greet/:name/:language', function(req, res) {
 //   let name = req.params.name;

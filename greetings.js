@@ -31,12 +31,12 @@ module.exports = function Greetings(pool) {
     return countGreeted.rowCount;
   };
   let returnGreeted = async function () {
-    let allGreeted = await pool.query('select greeted_names from users');
+    let allGreeted = await pool.query('select * from users');
     return allGreeted.rows;
   };
   let getCounter = async function (users) {
-    let namesCounted = await pool.query('select greeted_names, greeted_counter from users where greeted_names = $1', [users]);
-    return namesCounted.rows[0];
+    let namesCounted = await pool.query('select count(*) from users');
+    return namesCounted.rows[0].count;
   };
   let clearData = async function () {
     let clearSQL = await pool.query('delete from users');
@@ -44,6 +44,7 @@ module.exports = function Greetings(pool) {
   }
 
   return {
+    greet,
     getGreeted,
     returnGreeted,
     getCounter,
