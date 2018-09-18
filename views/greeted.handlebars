@@ -7,9 +7,8 @@
         </thead>
 
         <tbody>
-            {{#each database}}
-            <td>{{greeted_names}}</td>
-            <td>{{greeted_counter}}</td>
+            {{#each greeted_names}}
+            <td><a href="/greeted/{{greeted_names}}"></a>{{greeted_names}}</td>
             </tr>
             {{/each}}
         </tbody>

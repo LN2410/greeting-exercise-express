@@ -4,8 +4,8 @@
       <h2>Greetings App</h2>
     </div>
     <div class="three columns">
-    <form action="/greets" method="POST">
-      <button class="viewBtn" id="viewBtn" type="submit" name="greets" value="{{greets}}">View Greeted</button>
+    <form action="/greeted" method="POST">
+      <button class="viewBtn" id="viewBtn" type="submit" name="greeted" value="{{greeted}}">View Greeted</button>
     </form>
   </div>
   </div>
@@ -21,6 +21,7 @@
           }
         </script>
     </div>
+  
     <p>
       <div class="RadioBtn">
         <input type="radio" name="language" class="language" value="English">English
@@ -29,11 +30,11 @@
 
       </div>
       <p>
-        <div class="counter" name="counterAll" value="count"><b>Counter:{{count}}</b></div>
+        <div class="counter" name="count" value="count"><b>Counter:{{count}}</b></div>
         <p>
           <div class="row">
             <div class="three columns">
-              <button class="greetMeBtn" id="greetMeBtn" type="submit" name="greeted" value="{{greet}}">GREET ME</button>
+              <button class="greetMeBtn" id="greetMeBtn" type="submit" name="greet" value="{{greet}}">GREET ME</button>
               <button class="clearBtn" id="clearBtn" type="submit" name="reset" value="{{clearData}}">RESET</button>
             </div>
             </form>

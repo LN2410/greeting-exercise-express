@@ -77,30 +77,51 @@ app.post('/greet', async (req, res) => {
   }
 });
 
-// app.get('/greet/:name/:language', function(req, res) {
-//   let name = req.params.name;
-//   let language = req.params.language;
-//   let greetName = greetPeople.greet(language, name);
-//   let count = greetPeople.greetCounter();
-//
-//   res.render('greeting', {
-//     greetName,
-//     count
-//   });
-//   // res.redirect('/');
-// });
+app.post('/greet', async (req, res, next) => {
+  try {
+      let names = req.body.name;
+      let languages = req.body.language;
+      if (!names || names === '') {
+          req.flash('error', 'Please enter a name in the text field!');
+      } else
+      if (!language) {
+          req.flash('error', 'Please select a language!');
+          return res.redirect('/');
+      }
 
-app.post('/greets', function (req, res) {
-  let greetName = req.body.greeted_names;
-  res.render('greets');
+      let show = await greetPeople.getGreeted(languages, names);
+      let counts = await greetPeople.getGreeted();
+      res.render('greeting', {
+          show,
+          counts
+      });
+  }catch (error) {
+      next(error.stack);
+  }
 });
 
-// app.post('/', function(req, res){
-//   greetPeople.reset();
-//   // let count = greetPeople.greetCounter();
-//   // res.render('greeting', {
-//   //   count
-//   // });
+app.get('/greeted/', async (req, res, next) => {
+  try {
+      res.render('greeted', {
+        greeted_names: await greetPeople.returnGreeted()
+      });
+  } catch (error) {
+      next(error.stack);
+  }
+});
+
+app.post('/greeted', function (req, res) {
+  let greetName = req.body.greeted_names;
+  res.render('greeted');
+});
+
+// app.get('/greeting', async (req, res, next) => {
+//   try {
+//       await greetPeople.clearData()
+//       res.redirect('/');
+//   } catch (error) {
+//       next(error.stack);
+//   }
 // });
 
 const PORT = process.env.PORT || 3015;
