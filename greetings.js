@@ -34,13 +34,12 @@ module.exports = function Greetings(pool) {
     let allGreeted = await pool.query('select * from users');
     return allGreeted.rows;
   };
-  let getCounter = async function (users) {
-    let namesCounted = await pool.query('select count(*) from users');
-    return namesCounted.rows[0].count;
+  let getCounter = async function (name) {
+    let namesCounted = await pool.query('select * from users where greeted_names = $1', [name]);
+    return namesCounted.rows.greeted_counter;
   };
   let clearData = async function () {
-    let clearSQL = await pool.query('delete from users');
-    return clearSQL.rows[0];
+    await pool.query('delete from users');
   }
 
   return {

@@ -1,15 +1,18 @@
-<div class="row">
+<div class="row greeted">
     <h2>Greeted Names</h2>
 
     <table>
         <thead>
             <th>Greeted Names</th>
-        </thead>
+            <form action="/" method="GET">
+            <button class="backBtn" type="submit" name="back">Back</button>
+            </form>
+    </thead>
 
         <tbody>
-            {{#each greeted_names}}
-            <td><a href="/greeted/{{greeted_names}}"></a>{{greeted_names}}</td>
-            </tr>
+            {{#each users}}
+            <td class="theGreet">{{greeted_names}} has been greeted {{greeted_counter}} time(s)</td>
+             </tr>
             {{/each}}
         </tbody>
     </table>

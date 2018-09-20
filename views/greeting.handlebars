@@ -4,7 +4,7 @@
       <h2>Greetings App</h2>
     </div>
     <div class="three columns">
-    <form action="/greeted" method="POST">
+    <form action="/greeted" method="GET">
       <button class="viewBtn" id="viewBtn" type="submit" name="greeted" value="{{greeted}}">View Greeted</button>
     </form>
   </div>
@@ -35,11 +35,14 @@
           <div class="row">
             <div class="three columns">
               <button class="greetMeBtn" id="greetMeBtn" type="submit" name="greet" value="{{greet}}">GREET ME</button>
-              <button class="clearBtn" id="clearBtn" type="submit" name="reset" value="{{clearData}}">RESET</button>
+              
             </div>
             </form>
-
+            <form action='/deleteAll' method='get'>
+            <button class="clearBtn" id="clearBtn" type="submit" name="reset">Clear All</button>
+            </form>
             <div class="three columns">
+              <div>{{#if messages.info}}{{messages.info}}{{/if}}</div>
               <div class="greeting" name="greetMsg" value="">{{greetName}}</div>
             </div>
           </div>
