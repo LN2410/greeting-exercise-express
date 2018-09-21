@@ -64,6 +64,10 @@ app.get('/', async(req, res) => {
   res.redirect('/');
 });
 
+app.get('/', async(req,res) =>{
+  res.redirect('/greeted');
+})
+
 app.post('/greet', async (req, res) => {
   try {
       let names = req.body.name;
