@@ -36,7 +36,7 @@ module.exports = function Greetings(pool) {
   };
   let getCounter = async function (name) {
     let namesCounted = await pool.query('select * from users where greeted_names = $1', [name]);
-    return namesCounted.rows.greeted_counter;
+    return namesCounted.rows;
   };
   let clearData = async function () {
     await pool.query('delete from users');

@@ -1,19 +1,11 @@
 <div class="row times">
     <h2>Times peope are greeted</h2>
 
-    <table>
-        <thead>
-            <th>Greeted Names</th>
             <form action="/" method="GET">
-            <button class="backBtn" type="submit" name="back">Back</button>
+            <button class="backBtn" type="submit" name="back">back</button>
+            <button class="backBtn" type="submit" name="back">home</button>
             </form>
-    </thead>
-
-        <tbody>
-            {{!-- {{#each users}}
-            <td class="theGreet">{{greeted_names}} has been greeted {{greeted_counter}} time(s)</td>
-             </tr>
-            {{/each}} --}}
-        </tbody>
-    </table>
+    
+            <p>Hello, {{names}} has been greeted {{greeted_counter }} time(s)</p>
+       
 </div>
