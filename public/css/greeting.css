@@ -43,3 +43,7 @@ table{
 .theGreet{
   text-decoration-color: blue;
 }
+.par {
+  margin-left: 35%; 
+  color: brown;
+}
