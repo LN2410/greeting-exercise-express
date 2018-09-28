@@ -25,59 +25,59 @@ describe('The Greeting Exercise Function', function(){
     console.log(engGreet);
     });
 
-  //   it('should greet the name entered in Afrikaans when the greetbtn is clicked', function(){
-  //   var afriGreet = GreetPeople();
+    it('should greet the name entered in Afrikaans when the greetbtn is clicked', function(){
+    var afriGreet = GreetPeople();
 
-  //   afriGreet.greetFunc("Siyasanga", 'afrikaans')
+    afriGreet.greetFunc("Siyasanga", 'afrikaans')
 
-  //   assert.equal(afriGreet.returnGreet(),'Goeie dag, Siyasanga')
-  //   });
+    assert.equal(afriGreet.returnGreet(),'Goeie dag, Siyasanga')
+    });
 
-  //   it('should greet the name entered in isiXhosa when the greetbtn is clicked', function(){
-  //   var xhosaGreet = GreetPeople();
+    it('should greet the name entered in isiXhosa when the greetbtn is clicked', function(){
+    var xhosaGreet = GreetPeople();
 
-  //   xhosaGreet.greetFunc("Schtoo", 'isiXhosa')
+    xhosaGreet.greetFunc("Schtoo", 'isiXhosa')
 
-  //   assert.equal(xhosaGreet.returnGreet(), 'Molo, Schtoo')
-  // });
+    assert.equal(xhosaGreet.returnGreet(), 'Molo, Schtoo')
+  });
 
-  // it('should be able to count names greeted in English', function(){
-  //   var greetAll = GreetPeople();
+  it('should be able to count names greeted in English', function(){
+    var greetAll = GreetPeople();
 
-  //   greetAll.greetFunc("Yonela", 'isiXhosa');
-  //   greetAll.greetFunc("Sanele", 'isiXhosa');
-  //   greetAll.greetFunc("Ntando", 'isiXhosa');
-  //   greetAll.greetFunc("Pholisa", 'isiXhosa');
-  //   greetAll.greetFunc("Siyasanga", 'isiXhosa');
+    greetAll.greetFunc("Yonela", 'isiXhosa');
+    greetAll.greetFunc("Sanele", 'isiXhosa');
+    greetAll.greetFunc("Ntando", 'isiXhosa');
+    greetAll.greetFunc("Pholisa", 'isiXhosa');
+    greetAll.greetFunc("Siyasanga", 'isiXhosa');
 
-  //   assert.equal(greetAll.greetCounter(), 5)
-  // });
+    assert.equal(greetAll.greetCounter(), 5)
+  });
 
-  // it('should only count the same name entered once', function(){
-  //   var everyName = GreetPeople();
+  it('should only count the same name entered once', function(){
+    var everyName = GreetPeople();
 
-  //   everyName.greetFunc("Yonela", 'afrikaans')
-  //   everyName.greetFunc("Yonela", 'english')
-  //   everyName.greetFunc("Yonela", 'isiXhosa')
+    everyName.greetFunc("Yonela", 'afrikaans')
+    everyName.greetFunc("Yonela", 'english')
+    everyName.greetFunc("Yonela", 'isiXhosa')
 
-  //   assert.equal(everyName.greetCounter(), 1);
-  // });
+    assert.equal(everyName.greetCounter(), 1);
+  });
 
-  // it('should not greet when there is no name entered', function(){
-  //   var noName = GreetPeople();
+  it('should not greet when there is no name entered', function(){
+    var noName = GreetPeople();
 
-  //   noName.greetFunc("", 'afrikaans')
+    noName.greetFunc("", 'afrikaans')
 
-  //   assert.equal(noName.greetFunc());
-  // });
+    assert.equal(noName.greetFunc());
+  });
 
-  // it('should not greet when there is no language selected', function(){
-  //   var noLang = GreetPeople();
+  it('should not greet when there is no language selected', function(){
+    var noLang = GreetPeople();
 
-  //   noLang.greetFunc("Lihle", '')
+    noLang.greetFunc("Lihle", '')
 
-  //   assert.equal(noLang.greetFunc());
-  // });
+    assert.equal(noLang.greetFunc());
+  });
   after(function() {
     pool.end();
   });
