@@ -7,78 +7,64 @@ const Pool = pg.Pool;
 const connectionString = process.env.DATABASE_URL || 'postgresql://coder:pg123@localhost:5432/my_greetings';
 
 const pool = new Pool({
-    connectionString,
-  });
+  connectionString,
+});
 
-describe('The Greeting Exercise Function', function(){
-  
-  beforeEach(async function(){
+describe('The Greeting Exercise Function', function () {
+
+  beforeEach(async function () {
     await pool.query("delete from users;");
-    });
+  });
+  let theGreet = Greetings(pool);
 
-    it('should greet the name entered in English when the greetbtn is clicked', function(){
-    let engGreet = Greetings(pool);
+  it('should greet the name entered in English when the greetbtn is clicked', async function () {
 
-    engGreet.greet("Lihle", 'english')
-
-    assert.equal(engGreet.getGreeted(),'Good day, Lihle')
-    console.log(engGreet);
-    });
-
-    it('should greet the name entered in Afrikaans when the greetbtn is clicked', function(){
-    var afriGreet = GreetPeople();
-
-    afriGreet.greetFunc("Siyasanga", 'afrikaans')
-
-    assert.equal(afriGreet.returnGreet(),'Goeie dag, Siyasanga')
-    });
-
-    it('should greet the name entered in isiXhosa when the greetbtn is clicked', function(){
-    var xhosaGreet = GreetPeople();
-
-    xhosaGreet.greetFunc("Schtoo", 'isiXhosa')
-
-    assert.equal(xhosaGreet.returnGreet(), 'Molo, Schtoo')
+    let result = await theGreet.greet('English', "Lihle")
+    console.log(result);
+    assert.equal(result, 'Good day, Lihle')
   });
 
-  it('should be able to count names greeted in English', function(){
-    var greetAll = GreetPeople();
+  it('should greet the name entered in Afrikaans when the greetbtn is clicked', async function () {
 
-    greetAll.greetFunc("Yonela", 'isiXhosa');
-    greetAll.greetFunc("Sanele", 'isiXhosa');
-    greetAll.greetFunc("Ntando", 'isiXhosa');
-    greetAll.greetFunc("Pholisa", 'isiXhosa');
-    greetAll.greetFunc("Siyasanga", 'isiXhosa');
-
-    assert.equal(greetAll.greetCounter(), 5)
+    let result = await theGreet.greet('Afrikaans', "Siyasanga")
+    console.log(result);
+    assert.equal(result, 'Goeie dag, Siyasanga')
   });
 
-  it('should only count the same name entered once', function(){
-    var everyName = GreetPeople();
+  it('should greet the name entered in isiXhosa when the greetbtn is clicked', async function () {
 
-    everyName.greetFunc("Yonela", 'afrikaans')
-    everyName.greetFunc("Yonela", 'english')
-    everyName.greetFunc("Yonela", 'isiXhosa')
+    let result = await theGreet.greet('isiXhosa', "Yonela")
+    console.log(result);
 
-    assert.equal(everyName.greetCounter(), 1);
+    assert.equal(result, 'Molo, Yonela')
+  });
+
+  it('should be able to count names greeted in isiXhosa', async function () {
+
+    await theGreet.greet('isiXhosa', "Yonela");
+    await theGreet.greet('isiXhosa', "Sanele");
+    await theGreet.greet('isiXhosa', "Ntando");
+
+    assert.equal(await theGreet.getGreeted(), 3)
+  });
+
+  it('should only count the same name entered once', async function(){
+
+    await theGreet.greet('Afrikaans', "Yonela");
+    await theGreet.greet('English', "Yonela");
+    await theGreet.greet('isiXhosa', "Yonela");
+
+    assert.equal(await theGreet.getGreeted(), 1);
   });
 
   it('should not greet when there is no name entered', function(){
-    var noName = GreetPeople();
 
-    noName.greetFunc("", 'afrikaans')
+    theGreet.greet('Afrikaans',"")
 
-    assert.equal(noName.greetFunc());
+    assert.equal(await theGreet.greet());
   });
 
-  it('should not greet when there is no language selected', function(){
-    var noLang = GreetPeople();
-
-    noLang.greetFunc("Lihle", '')
-
-    assert.equal(noLang.greetFunc());
-  });
-  after(function() {
+  after(function () {
     pool.end();
   });
 });
