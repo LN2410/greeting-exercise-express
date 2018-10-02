@@ -60,21 +60,22 @@ app.get('/', async (req, res) => {
   };
 });
 
-app.get('/', async(req, res) => {
-  res.redirect('/');
-});
+// app.get('/', async(req, res) => {
+//   res.redirect('/');
+// });
 
-app.get('/', async(req,res) =>{
-  res.redirect('/greeted');
-})
 
 app.post('/greet', async (req, res) => {
   try {
       let names = req.body.name;
       let languages = req.body.language;
-      if(names === '' || languages === undefined) {
-          req.flash('info', 'Please enter a name in the text field and Please select a language! ');
+      if(names === '') {
+          req.flash('info', 'Please enter a name in the text field!');
           res.redirect('/');
+      }
+      else if(languages === undefined){
+        req.flash('info', 'Please select a language!');
+        res.redirect('/');
       }
       else{
         let show = await greetPeople.greet(languages, names);

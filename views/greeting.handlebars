@@ -41,8 +41,8 @@
             <form action='/deleteAll' method='get'>
             <button class="clearBtn" id="clearBtn" type="submit" name="reset">Clear All</button>
             </form>
-            <div class="three columns">
-              <div>{{#if messages.info}}{{messages.info}}{{/if}}</div>
+            <div class="three columns display">
+              <div class="flashMsg">{{#if messages.info}}{{messages.info}}{{/if}}</div>
               <div class="greeting" name="greetMsg" value="">{{greetName}}</div>
             </div>
           </div>

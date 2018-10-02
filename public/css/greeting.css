@@ -47,3 +47,10 @@ table{
   margin-left: 35%; 
   color: brown;
 }
+.flashMsg{
+  color: red;
+  font: italic small-caps bold 25px/28px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.display{
+  font-size: 25px;
+}

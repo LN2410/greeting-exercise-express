@@ -57,13 +57,19 @@ describe('The Greeting Exercise Function', function () {
     assert.equal(await theGreet.getGreeted(), 1);
   });
 
-  it('should not greet when there is no name entered', function(){
+  it('should not greet when there is no name entered', async function(){
 
-    theGreet.greet('Afrikaans',"")
+   let result = await theGreet.greet('Afrikaans',"")
 
-    assert.equal(await theGreet.greet());
+    assert.equal(result, "Goeie dag, ");
   });
 
+  // it('should not greet when there is no language selected',async function(){
+    
+  //   await theGreet.greet("", 'Lihle')
+
+  //   assert.equal(await theGreet.greet(), ", Lihle");
+  // });
   after(function () {
     pool.end();
   });
