@@ -4,7 +4,7 @@
     <table>
         <thead>
             <th>Greeted Names</th>
-            <th>Counter</th>
+            {{!-- <th>Counter</th> --}}
             <form action="/" method="GET">
             <button class="backBtn" type="submit" name="back">Back</button>
             </form>
@@ -13,7 +13,7 @@
         <tbody>
             {{#each users}}
             <td class="theGreet"><a href="counter/{{greeted_names}}">{{greeted_names}}</a></td> 
-            <td>{{greeted_counter}}</td>
+            {{!-- <td>{{greeted_counter}}</td> --}}
              </tr>
             {{/each}}
         </tbody>

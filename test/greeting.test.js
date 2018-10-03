@@ -39,13 +39,15 @@ describe('The Greeting Exercise Function', function () {
     assert.equal(result, 'Molo, Yonela')
   });
 
-  it('should be able to count names greeted in isiXhosa', async function () {
+  it('should be able to count names greeted in different languages where names are written in both capital letters and small letters', async function () {
 
     await theGreet.greet('isiXhosa', "Yonela");
-    await theGreet.greet('isiXhosa', "Sanele");
+    await theGreet.greet('Afrkaans', "yonela");
+    await theGreet.greet('isiXhosa', "sanele");
     await theGreet.greet('isiXhosa', "Ntando");
+    await theGreet.greet('English', "LIYABONA");
 
-    assert.equal(await theGreet.getGreeted(), 3)
+    assert.equal(await theGreet.getGreeted(), 5)
   });
 
   it('should only count the same name entered once', async function(){
@@ -64,11 +66,11 @@ describe('The Greeting Exercise Function', function () {
     assert.equal(result, "Goeie dag, ");
   });
 
-  // it('should not greet when there is no language selected',async function(){
+  // it('should not greet when there is no language selected or name entered',async function(){
     
-  //   await theGreet.greet("", 'Lihle')
+  //   await theGreet.greet('')
 
-  //   assert.equal(await theGreet.greet(), ", Lihle");
+  //   assert.equal();
   // });
   after(function () {
     pool.end();
